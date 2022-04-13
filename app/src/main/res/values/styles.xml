@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="cardViewStyle" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:focusable">true</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+    </style>
+    <style name="newsTapeImageStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/news_item_image_height</item>
+        <item name="android:src">@drawable/default_news_image</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+    <style name="newsTapeTitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/news_item_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">@dimen/news_item_title_margin</item>
+        <item name="android:text">@string/title</item>
+    </style>
+    <style name="newsTapeDescriptionStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/news_item_description_text_size</item>
+        <item name="android:layout_margin">@dimen/news_item_description_margin</item>
+        <item name="android:text">@string/description</item>
+    </style>
+    <style name="newsTapeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">end</item>
+        <item name="android:layout_marginEnd">@dimen/news_item_button_margin_end</item>
+        <item name="android:text">Read more</item>
+    </style>
+</resources>

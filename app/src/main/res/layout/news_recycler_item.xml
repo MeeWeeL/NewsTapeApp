@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/cardViewStyle">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            style="@style/newsTapeImageStyle"
+            android:id="@+id/news_tape_item_image"
+            android:contentDescription="@string/news_image" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/news_tape_item_title"
+            style="@style/newsTapeTitleStyle"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/news_tape_item_description"
+            style="@style/newsTapeDescriptionStyle" />
+        <Button
+            android:id="@+id/news_tape_item_button"
+            style="@style/newsTapeButtonStyle" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
