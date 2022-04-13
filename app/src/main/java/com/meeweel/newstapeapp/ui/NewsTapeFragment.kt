@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.meeweel.newstapeapp.data.NewsTapeState
+import com.meeweel.newstapeapp.data.models.NewsTapeState
 import com.meeweel.newstapeapp.databinding.NewsTapeFragmentLayoutBinding
 
 class NewsTapeFragment : Fragment() {
@@ -31,18 +32,20 @@ class NewsTapeFragment : Fragment() {
 
         binding.newsTapeRecycler.adapter = adapter
         val observer = Observer<NewsTapeState> { a ->
+            binding.swipeRefresh.isRefreshing = false
             renderData(a)
         }
         viewModel.getData().observe(viewLifecycleOwner, observer)
-//        viewModel.getNewsFromLocalSource()
+        viewModel.getNewsFromLocalSource()
 
         binding.swipeRefresh.setColorSchemeResources(
             android.R.color.holo_blue_bright,
             android.R.color.holo_green_light,
-            android.R.color.holo_orange_light
+            android.R.color.holo_orange_light,
+            android.R.color.holo_red_light
         )
         binding.swipeRefresh.setOnRefreshListener {
-            TODO()
+            viewModel.getNewsFromLocalSource()
         }
     }
 
@@ -50,14 +53,16 @@ class NewsTapeFragment : Fragment() {
         is NewsTapeState.Success -> {
             val newsData = data.newsData
             binding.loadingLayout.visibility = View.GONE
+            Toast.makeText(requireContext(), "Done", Toast.LENGTH_SHORT).show()
             adapter.setNewsData(newsData)
         }
         is NewsTapeState.Loading -> {
             binding.loadingLayout.visibility = View.VISIBLE
+            Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
         }
         is NewsTapeState.Error -> {
             binding.loadingLayout.visibility = View.GONE
-
+            Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
         }
     }
 

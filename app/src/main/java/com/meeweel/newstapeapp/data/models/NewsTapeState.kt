@@ -1,4 +1,4 @@
-package com.meeweel.newstapeapp.data
+package com.meeweel.newstapeapp.data.models
 
 sealed class NewsTapeState {
     data class Success(val newsData: List<NewsPostDTO>) : NewsTapeState()
