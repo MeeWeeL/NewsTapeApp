@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Me/AndroidStudioProjects/NewsTapeApp/app/src/main/res/drawable/ic_no_picture.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/Me/AndroidStudioProjects/NewsTapeApp/app/src/main/res/drawable/ic_random.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/Me/AndroidStudioProjects/NewsTapeApp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Me/AndroidStudioProjects/NewsTapeApp/app/src/main/res/layout/news_recycler_item.xml" value="0.25" />
         <entry key="..\:/Users/Me/AndroidStudioProjects/NewsTapeApp/app/src/main/res/layout/news_tape_fragment_layout.xml" value="0.22" />

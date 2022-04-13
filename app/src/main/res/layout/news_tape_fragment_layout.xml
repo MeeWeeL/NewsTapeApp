@@ -30,6 +30,12 @@
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:tint="@color/black"
             android:layout_gravity="center" />
     </FrameLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        style="@style/fabStyle"
+        android:contentDescription="@string/todo" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

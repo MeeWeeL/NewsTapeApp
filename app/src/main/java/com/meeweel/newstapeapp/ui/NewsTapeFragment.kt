@@ -10,9 +10,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.meeweel.newstapeapp.data.models.NewsTapeState
 import com.meeweel.newstapeapp.databinding.NewsTapeFragmentLayoutBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class NewsTapeFragment : Fragment() {
-
     private val viewModel: NewsViewModel by lazy {
         ViewModelProvider(this).get(NewsViewModel::class.java)
     }
@@ -47,22 +48,22 @@ class NewsTapeFragment : Fragment() {
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.getNewsFromLocalSource()
         }
+        binding.fab.setOnClickListener {
+            viewModel.randomizeData()
+        }
     }
 
     private fun renderData(data: NewsTapeState) = when (data) {
         is NewsTapeState.Success -> {
             val newsData = data.newsData
             binding.loadingLayout.visibility = View.GONE
-            Toast.makeText(requireContext(), "Done", Toast.LENGTH_SHORT).show()
             adapter.setNewsData(newsData)
         }
         is NewsTapeState.Loading -> {
             binding.loadingLayout.visibility = View.VISIBLE
-            Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
         }
         is NewsTapeState.Error -> {
             binding.loadingLayout.visibility = View.GONE
-            Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
         }
     }
 

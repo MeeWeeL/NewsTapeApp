@@ -1,8 +1,12 @@
 package com.meeweel.newstapeapp.ui
 
 import android.view.LayoutInflater
+import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.meeweel.newstapeapp.R
 import com.meeweel.newstapeapp.data.models.NewsPostDTO
 import com.meeweel.newstapeapp.databinding.NewsRecyclerItemBinding
@@ -34,19 +38,43 @@ class NewsTapeFragmentAdapter :
         fun bind(newsPost: NewsPostDTO) {
             binding.apply {
                 newsTapeItemImage.setImageResource(R.drawable.default_news_image)
-//                loadPicture(newsPost.image, binding)
+                loadPicture(newsPost.image, binding)
                 newsTapeItemTitle.text = newsPost.title
                 newsTapeItemDescription.text = newsPost.description
+                newsTapeItemButton.setOnClickListener {
+                    when (newsTapeItemDescription.visibility) {
+                        GONE -> {
+                            newsTapeItemDescription.visibility = VISIBLE
+                            newsTapeItemButton.text = HIDE
+                        }
+                        VISIBLE -> {
+                            newsTapeItemDescription.visibility = GONE
+                            newsTapeItemButton.text = MORE
+                        }
+                        View.INVISIBLE -> newsTapeItemDescription.visibility = GONE
+                    }
+                }
             }
         }
     }
 
-    private fun loadPicture(image: String, binding: NewsRecyclerItemBinding) {
-        TODO()
+    private fun loadPicture(image: String?, binding: NewsRecyclerItemBinding) {
+        if (image != null) {
+            Glide.with(binding.root)
+                .load(image)
+                .error(R.drawable.ic_no_picture)
+                .placeholder(R.drawable.default_news_image)
+                .into(binding.newsTapeItemImage)
+        }
     }
 
     fun setNewsData(data: List<NewsPostDTO>) {
         newsData = data
         notifyDataSetChanged()
+    }
+
+    companion object {
+        const val HIDE = "Hide description"
+        const val MORE = "Read more"
     }
 }

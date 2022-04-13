@@ -8,4 +8,6 @@
     <dimen name="news_item_image_height">240dp</dimen>
     <dimen name="card_corner_radius">25dp</dimen>
     <dimen name="card_elevation">4dp</dimen>
+    <dimen name="fab_margin_top">15dp</dimen>
+    <dimen name="fab_margin_end">15dp</dimen>
 </resources>
