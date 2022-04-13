@@ -1,7 +1,6 @@
 package com.meeweel.newstapeapp.data
 
 data class NewsPostDTO(
-    val author: String,
     val title: String,
     val description: String,
     val url: String,
