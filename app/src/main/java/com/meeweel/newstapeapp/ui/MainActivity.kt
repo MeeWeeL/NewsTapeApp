@@ -1,11 +1,17 @@
-package com.meeweel.newstapeapp
+package com.meeweel.newstapeapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.meeweel.newstapeapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.container, NewsTapeFragment.newInstance())
+                .commitNow()
+        }
     }
 }
